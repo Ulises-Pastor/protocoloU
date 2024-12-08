@@ -24,7 +24,7 @@ def send_file(server_ip, file_name):
         end_time = time.time()
 
         # Simular retardo
-        simulated_delay = max(0, np.random.randn() * std_dev_delay + mean_delay)
+        simulated_delay = max(0, np.random.randn() * std_dev_delay + mean_delay)  
         total_time = (end_time - start_time) + simulated_delay
 
         print(f"Respuesta del servidor: {response}")

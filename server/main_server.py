@@ -32,7 +32,19 @@ def handle_client(client_socket, addr):
             f.write(data)
 
     # Simular tiempo de "envío a la capa de aplicación"
-    simulated_time = max(0, np.random.randn() * std_dev_time + mean_time)
+    simulated_time = max(0, np.random.randn() * std_dev_time + mean_time) +40 #se agrega un retardo de 40 segundos para sque se note mas el tiempo de procesamiento
+
+    
+    response = f"Conexión recibida. Buffer actual: {buffer_size}\n"
+    client_socket.send(response.encode())
+    client_socket.close()
+    """El servidor recibe el archivo y lo guarda en el sistema de archivos local. Luego, envía una respuesta al cliente con el estado del buffer y cierra la conexión. El tiempo de simulación se calcula aleatoriamente y se envía al cliente como parte de la respuesta."""
+    
+    """desde aqui se simula el tiempo del procesamiendo dl buffer  
+    |
+    |
+    V
+    """
     time.sleep(simulated_time)
 
     # Incrementar el buffer después del tiempo simulado
@@ -40,9 +52,7 @@ def handle_client(client_socket, addr):
         buffer_size += 1
 
     # Enviar respuesta al cliente
-    response = f"Conexión recibida. Buffer actual: {buffer_size}\n"
-    client_socket.send(response.encode())
-    client_socket.close()
+    
 
 def start_server():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
