@@ -25,10 +25,10 @@ def handle_client(client_socket, addr):
     # Recibir archivo
     filename = f"archivo_recibido_{addr[1]}.jpg"
     with open(filename, "wb") as f:
-        while True:
             data = client_socket.recv(1024)
             if not data:
-                break
+                print("Error: No se recibió ningún dato.")
+                return
             f.write(data)
 
     # Simular tiempo de "envío a la capa de aplicación"
