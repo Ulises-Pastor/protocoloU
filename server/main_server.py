@@ -36,8 +36,7 @@ def handle_client(client_socket, addr):
             f.write(data)
 
     # Simular tiempo de "envío a la capa de aplicación"
-    simulated_time = np.random.normal(mean_time, std_dev_time, 1) #se agrega un retardo de 40 segundos para sque se note mas el tiempo de procesamiento
-    #print(simulated_time)
+    simulated_time = np.random.normal(mean_time, std_dev_time, 1)
     
     response = f"Conexión recibida. Buffer actual: {buffer_size}\n"
     client_socket.send(response.encode())
